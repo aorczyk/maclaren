@@ -24,21 +24,21 @@ vcController.onVCcommand(function () {
     if (vcController.isKey("3", KeyState.Pressed)) {
         if (vcController.buttonToggled()) {
             wuKong.setLightMode(wuKong.LightMode.BREATH)
-            vcController.setButton("3", KeyColor.Yellow, "")
+            vcController.setButton("3", KeyVisibility.Visible, KeyColor.Yellow, "")
         } else {
             wuKong.setLightMode(wuKong.LightMode.OFF)
-            vcController.setButton("3", KeyColor.Black, "")
+            vcController.setButton("3", KeyVisibility.Visible, KeyColor.Black, "")
         }
     }
     if (vcController.isKey("4", KeyState.Pressed)) {
         if (vcController.buttonToggled()) {
             strip.setPixelColor(0, 1048575)
             strip.setPixelColor(1, 1048575)
-            vcController.setButton("4", KeyColor.Yellow, "")
+            vcController.setButton("4", KeyVisibility.Visible, KeyColor.Yellow, "")
         } else {
             strip.setPixelColor(0, 0)
             strip.setPixelColor(1, 0)
-            vcController.setButton("4", KeyColor.Black, "")
+            vcController.setButton("4", KeyVisibility.Visible, KeyColor.Black, "")
         }
         strip.show()
     }
