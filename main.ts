@@ -4,7 +4,7 @@ vcController.onVCsetup(function () {
     bluetooth.uartWriteLine("vc;sr;1;-60;60;1;1;0;0;;")
     bluetooth.uartWriteLine("vc;jrx;-60;60;1;0;0;")
     bluetooth.uartWriteLine("vc;jry;-100;100;1;0;0;")
-    bluetooth.uartWriteLine("vc;b;1;1;0;<i class=\"fa-solid fa-volume-high\"></i>;")
+    bluetooth.uartWriteLine("vc;b;1;0;0;<i class=\"fa-solid fa-volume-high\"></i>;")
     bluetooth.uartWriteLine("vc;b;2;1;2;<i class=\"fa-regular fa-lightbulb\"></i>;")
     bluetooth.uartWriteLine("vc;b;3;1;0;<i class=\"fa-regular fa-lightbulb\"></i>;")
     bluetooth.uartWriteLine("vc;b;4;1;0;<i class=\"fa-solid fa-lightbulb\"></i>;")
@@ -23,18 +23,22 @@ vcController.onVCcommand(function () {
     }
     if (vcController.isKey("3", KeyState.Pressed)) {
         if (vcController.buttonToggled()) {
-            wuKong.setLightMode(wuKong.LightMode.OFF)
-        } else {
             wuKong.setLightMode(wuKong.LightMode.BREATH)
+            vcController.setButton("3", KeyColor.Yellow, "")
+        } else {
+            wuKong.setLightMode(wuKong.LightMode.OFF)
+            vcController.setButton("3", KeyColor.Black, "")
         }
     }
     if (vcController.isKey("4", KeyState.Pressed)) {
         if (vcController.buttonToggled()) {
-            strip.setPixelColor(0, 0)
-            strip.setPixelColor(1, 0)
-        } else {
             strip.setPixelColor(0, 1048575)
             strip.setPixelColor(1, 1048575)
+            vcController.setButton("4", KeyColor.Yellow, "")
+        } else {
+            strip.setPixelColor(0, 0)
+            strip.setPixelColor(1, 0)
+            vcController.setButton("4", KeyColor.Black, "")
         }
         strip.show()
     }
