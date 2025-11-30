@@ -1,4 +1,4 @@
-vcController.onVCsetup(function () {
+myController.onSetup(1, function () {
     bluetooth.uartWriteLine("vc;init;")
     bluetooth.uartWriteLine("vc;sl;1;-100;100;1;1;0;1;;")
     bluetooth.uartWriteLine("vc;sr;1;-60;60;1;1;0;0;;")
@@ -14,36 +14,36 @@ vcController.onVCsetup(function () {
     bluetooth.uartWriteLine("vc;ir;2;")
     bluetooth.uartWriteLine("vc;show;sl,sr,jr,br,bl;")
 })
-vcController.onVCcommand(function () {
-    if (vcController.isSlider(InputSide.Right) || vcController.isOrientation(InputOrientaton.x) || vcController.isJoystick(InputSide.Right, JoystickDirection.x)) {
-        wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, 180 + vcController.getCommandValue())
+myController.onCommand(function () {
+    if (myController.isSlider(InputSide.Right) || myController.isOrientation(InputOrientaton.x) || myController.isJoystick(InputSide.Right, JoystickDirection.x)) {
+        wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, 180 + myController.getCommandValue())
     }
-    if (vcController.isSlider(InputSide.Left) || vcController.isJoystick(InputSide.Right, JoystickDirection.y)) {
-        wuKong.setServoSpeed(wuKong.ServoList.S7, vcController.getCommandValue())
+    if (myController.isSlider(InputSide.Left) || myController.isJoystick(InputSide.Right, JoystickDirection.y)) {
+        wuKong.setServoSpeed(wuKong.ServoList.S7, myController.getCommandValue())
     }
-    if (vcController.isKey("3", KeyState.Pressed)) {
-        if (vcController.buttonToggled()) {
+    if (myController.isKey("3", KeyState.Pressed)) {
+        if (myController.buttonToggled()) {
             wuKong.setLightMode(wuKong.LightMode.BREATH)
-            vcController.setButton("3", KeyVisibility.Visible, KeyColor.Yellow, "")
+            myController.setButton("3", KeyVisibility.Visible, KeyColor.Yellow, "")
         } else {
             wuKong.setLightMode(wuKong.LightMode.OFF)
-            vcController.setButton("3", KeyVisibility.Visible, KeyColor.Black, "")
+            myController.setButton("3", KeyVisibility.Visible, KeyColor.Black, "")
         }
     }
-    if (vcController.isKey("4", KeyState.Pressed)) {
-        if (vcController.buttonToggled()) {
+    if (myController.isKey("4", KeyState.Pressed)) {
+        if (myController.buttonToggled()) {
             strip.setPixelColor(0, 1048575)
             strip.setPixelColor(1, 1048575)
-            vcController.setButton("4", KeyVisibility.Visible, KeyColor.Yellow, "")
+            myController.setButton("4", KeyVisibility.Visible, KeyColor.Yellow, "")
         } else {
             strip.setPixelColor(0, 0)
             strip.setPixelColor(1, 0)
-            vcController.setButton("4", KeyVisibility.Visible, KeyColor.Black, "")
+            myController.setButton("4", KeyVisibility.Visible, KeyColor.Black, "")
         }
         strip.show()
     }
-    if (vcController.isKey("2", KeyState.Pressed)) {
-        if (vcController.buttonToggled()) {
+    if (myController.isKey("2", KeyState.Pressed)) {
+        if (myController.buttonToggled()) {
             pins.analogWritePin(AnalogPin.P12, 1023)
             pins.analogWritePin(AnalogPin.P15, 1023)
         } else {
@@ -51,10 +51,10 @@ vcController.onVCcommand(function () {
             pins.analogWritePin(AnalogPin.P15, 0)
         }
     }
-    if (vcController.isKey("1", KeyState.Pressed)) {
+    if (myController.isKey("1", KeyState.Pressed)) {
         music.ringTone(262)
     }
-    if (vcController.isKey("1", KeyState.Released)) {
+    if (myController.isKey("1", KeyState.Released)) {
         music.stopAllSounds()
     }
 })
