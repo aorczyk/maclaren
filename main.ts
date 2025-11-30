@@ -1,4 +1,4 @@
-myController.onSetup(1, function () {
+myController.onSetup(SetupConfirmation.Require, function () {
     bluetooth.uartWriteLine("vc;init;")
     bluetooth.uartWriteLine("vc;sl;1;-100;100;1;1;0;1;;")
     bluetooth.uartWriteLine("vc;sr;1;-60;60;1;1;0;0;;")
