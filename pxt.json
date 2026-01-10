@@ -4,7 +4,7 @@
     "dependencies": {
         "core": "*",
         "microphone": "*",
-        "My Controller": "github:aorczyk/vc-extension#master",
+        "My Controller": "github:aorczyk/vc-extension#f98bf672a03377eb427b6f15c469017913229d3b",
         "wuKong": "github:elecfreaks/pxt-wukong#v1.5.8",
         "bluetooth": "*"
     },
