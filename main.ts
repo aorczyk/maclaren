@@ -1,4 +1,5 @@
 myController.onSetup(myController.ConfirmationMode.Require, function () {
+    // Apply controller settings: initialize, configure sliders (left/right), joystick axes, buttons (1-4), orientation (X/Y), input labels, and layout
     myController.applySettings("vc;init; vc;sl;1;-100;100;1;1;0;1;; vc;sr;1;-60;60;1;1;0;0;; vc;jrx;-60;60;1;0;0; vc;jry;-100;100;1;0;0; vc;b;1;0;0;<i class=\"fa-solid fa-volume-high\"></i>; vc;b;2;1;2;<i class=\"fa-regular fa-lightbulb\"></i>; vc;b;3;1;0;<i class=\"fa-regular fa-lightbulb\"></i>; vc;b;4;1;0;<i class=\"fa-solid fa-lightbulb\"></i>; vc;ox;1;-45;45;-60;60;1;0;0; vc;oy;0;-45;45;-7;7;1;0;0; vc;il;1; vc;ir;2; vc;show;sl,sr,jr,br,bl;")
 })
 myController.onCommandReceived(function () {
