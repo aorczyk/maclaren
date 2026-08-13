@@ -19,7 +19,10 @@ myController.onCommand(function () {
         wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, 180 + myController.getCommandValue())
     }
     if (myController.isSlider(InputSide.Left) || myController.isJoystick(InputSide.Right, JoystickDirection.y)) {
+        wuKong.setMotorSpeed(wuKong.MotorList.M1, myController.getCommandValue())
+        wuKong.setMotorSpeed(wuKong.MotorList.M2, -1 * myController.getCommandValue())
         wuKong.setServoSpeed(wuKong.ServoList.S7, myController.getCommandValue())
+        wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, myController.getCommandValue())
     }
     if (myController.isKey("3", KeyState.Pressed)) {
         if (myController.buttonToggled()) {
@@ -32,15 +35,10 @@ myController.onCommand(function () {
     }
     if (myController.isKey("4", KeyState.Pressed)) {
         if (myController.buttonToggled()) {
-            strip.setPixelColor(0, 1048575)
-            strip.setPixelColor(1, 1048575)
             myController.setButton("4", KeyVisibility.Visible, KeyColor.Yellow, "")
         } else {
-            strip.setPixelColor(0, 0)
-            strip.setPixelColor(1, 0)
             myController.setButton("4", KeyVisibility.Visible, KeyColor.Black, "")
         }
-        strip.show()
     }
     if (myController.isKey("2", KeyState.Pressed)) {
         if (myController.buttonToggled()) {
@@ -58,7 +56,4 @@ myController.onCommand(function () {
         music.stopAllSounds()
     }
 })
-let strip: neopixel.Strip = null
-strip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
-strip.setBrightness(50)
 music.setVolume(20)
